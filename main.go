@@ -4,15 +4,24 @@ import (
 	"errors"
 	"flag"
 	"fmt"
+	"log"
 	"os"
 
+	"github.com/joho/godotenv"
 	"github.com/unidoc/unipdf/v3/common/license"
 	"github.com/unidoc/unipdf/v3/creator"
 	"github.com/unidoc/unipdf/v3/model"
 )
 
 func main() { 
-	
+	envErr := godotenv.Load(".env")
+
+	if envErr != nil {
+		log.Fatalf("Error loading .env file which contains the UNIPDF_KEY" , envErr)
+	}
+
+	UNIPDF_KEY := os.Getenv("UNIPDF_KEY")
+
 	filePath := flag.String("file", "", "Path to the PDF file to split")
 	every := flag.Int("every", 1, "Number of pages in each split PDF")
 	outputPath := flag.String("output" , "", "Path to save the new pdfs")
@@ -42,11 +51,9 @@ func main() {
 		fmt.Println("Error :" ,err)
 	}
 
-	licenseErr := license.SetMeteredKey("efb06ab3d5a559b529caff0482d5b148b41dbb3f2c6463a9fa1458e4e32321c4")
+	licenseErr := license.SetMeteredKey(UNIPDF_KEY)
 
-	if licenseErr != nil{
-		fmt.Printf("Error setting license key: %v\n", err)
-	}
+	fmt.Println(licenseErr);return
 
 	splitErr := splitPdf(filePath,outputPath,every)
 	

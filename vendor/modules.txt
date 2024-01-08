@@ -4,6 +4,9 @@ github.com/davecgh/go-spew/spew
 # github.com/gorilla/i18n v0.0.0-20150820051429-8b358169da46
 ## explicit
 github.com/gorilla/i18n/linebreak
+# github.com/joho/godotenv v1.5.1
+## explicit; go 1.12
+github.com/joho/godotenv
 # github.com/konsorten/go-windows-terminal-sequences v1.0.2
 ## explicit
 github.com/konsorten/go-windows-terminal-sequences

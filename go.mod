@@ -2,7 +2,10 @@ module github.com/sCuz12/pdfsplitter
 
 go 1.21.5
 
-require github.com/unidoc/unipdf/v3 v3.53.0
+require (
+	github.com/joho/godotenv v1.5.1
+	github.com/unidoc/unipdf/v3 v3.53.0
+)
 
 require (
 	github.com/davecgh/go-spew v1.1.1 // indirect
